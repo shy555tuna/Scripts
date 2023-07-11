@@ -1,4 +1,5 @@
-<# PS Script to send automated message to Nicole Christie, to confirm uptime on Terminal Server every week - KL #>
+<# PS Script to query uptime on host/servers(s) and send forward to user in domain #>
+
 function Get-Uptime {
     $servers = "ENTER HOSTNAME or IP HERE", "Can add more"
     $currentdate = Get-Date
