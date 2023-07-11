@@ -1,0 +1,21 @@
+<# PS Script to send automated message to Nicole Christie, to confirm uptime on Terminal Server every week - KL #>
+function Get-Uptime {
+    $servers = "ENTER HOSTNAME or IP HERE", "Can add more"
+    $currentdate = Get-Date
+        foreach($server in $servers){
+        $Bootuptime = (Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName $server).LastBootUpTime
+           $uptime = $currentdate - $Bootuptime
+           $message = "`nCurrent Date : $currentdate`nServer Uptime : $($uptime.Days) Days, $($uptime.Hours) Hours, $($uptime.Minutes) Minutes"
+           return $message
+        }
+}
+
+function Send-Uptime {
+    param (
+        $user = "domain user here"
+    )
+    msg $user /w "Good day $user, This is to confirm the automated reboot of the Terminal Server has been completed.`n$ServerUptime"
+}
+
+$ServerUptime = Get-Uptime
+Send-Uptime
