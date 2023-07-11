@@ -1,4 +1,4 @@
-<# PS Script to query uptime on host/servers(s) and send forward to user in domain #>
+<# PS Script to query uptime on host/servers(s) and forward uptime to user in domain #>
 
 function Get-Uptime {
     $servers = "ENTER HOSTNAME or IP HERE", "Can add more"
